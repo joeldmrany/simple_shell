@@ -18,3 +18,18 @@ char *_memset(char *s, char b, unsigned int n)
 	return (s);
 }
 
+/**
+ * ffree - it frees it
+ * @pp: a string
+ */
+void ffree(char **pp)
+{
+	char **t = pp;
+
+	if (!pp)
+		return;
+	while (*pp)
+		free(*pp++);
+	free(t);
+}
+
