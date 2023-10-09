@@ -16,3 +16,17 @@ int _isalpha(int c)
 		return (0);
 }
 
+/**
+ * is_delim - it checks the code
+ * @c: a checkered char
+ * @delim: a strint
+ * Return: return 1, else 0
+ */
+int is_delim(char c, char *delim)
+{
+	while (*delim)
+		if (*delim++ == c)
+			return (1);
+	return (0);
+}
+
