@@ -39,4 +39,37 @@ int interactive(info_t *info)
 {
 	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
+/**
+ *_atoi - make a string treated as number
+ *@s: a converted string
+ *Return: the number or 0 if it isn't number
+ */
+
+int _atoi(char *s)
+{
+	int a, sign = 1, flag = 0, output;
+	unsigned int result = 0;
+
+	for (a = 0;  s[a] != '\0' && flag != 2; a++)
+	{
+		if (s[a] == '-')
+			sign *= -1;
+
+		if (s[a] >= '0' && s[a] <= '9')
+		{
+			flag = 1;
+			result *= 10;
+			result += (s[a] - '0');
+		}
+		else if (flag == 1)
+			flag = 2;
+	}
+
+	if (sign == -1)
+		output = -result;
+	else
+		output = result;
+
+	return (output);
+}
 
