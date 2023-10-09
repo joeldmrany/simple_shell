@@ -30,3 +30,13 @@ int is_delim(char c, char *delim)
 	return (0);
 }
 
+/**
+ * interactive - if the mode is interactive return true (1) value
+ * @info: address structure
+ * Return: when the mode is interactive return 1, else 0
+ */
+int interactive(info_t *info)
+{
+	return (isatty(STDIN_FILENO) && info->readfd <= 2);
+}
+
