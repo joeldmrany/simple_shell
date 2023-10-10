@@ -41,5 +41,24 @@ void _eputs(char *str)
 		a++;
 	}
 }
+/**
+ *_putsfd - output the string
+ * @str: outputted sentence
+ * @fd: a fd
+ *
+ * Return: any number
+ */
+int _putsfd(char *str, int fd)
+{
+	int a = 0;
+
+	if (!str)
+		return (0);
+	while (*str)
+	{
+		a += _putfd(*str++, fd);
+	}
+	return (a);
+}
 
 
