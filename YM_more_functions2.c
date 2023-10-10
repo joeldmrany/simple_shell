@@ -35,4 +35,21 @@ char *convert_number(long int num, int base, int flags)
 		*--ptr = sign;
 	return (ptr);
 }
+/**
+ * print_error - getting error
+ * @info: the information
+ * @estr: the estr
+ *
+ * Return: 0 or 1
+ */
+void print_error(info_t *info, char *estr)
+{
+	_eputs(info->fname);
+	_eputs(": ");
+	print_d(info->line_count, STDERR_FILENO);
+	_eputs(": ");
+	_eputs(info->argv[0]);
+	_eputs(": ");
+	_eputs(estr);
+}
 
