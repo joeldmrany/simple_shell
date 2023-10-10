@@ -61,4 +61,24 @@ int _putsfd(char *str, int fd)
 	return (a);
 }
 
+/**
+ * _eputchar - output the char
+ * @c: outputted character
+ *
+ * Return: 1 or 0
+ */
+int _eputchar(char c)
+{
+	static int i;
+	static char buf[WRITE_BUF_SIZE];
+
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	{
+		write(2, buf, i);
+		i = 0;
+	}
+	if (c != BUF_FLUSH)
+		buf[i++] = c;
+	return (1);
+}
 
