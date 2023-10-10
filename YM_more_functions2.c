@@ -91,4 +91,31 @@ int print_d(int input, int fd)
 	return (count);
 }
 
+/**
+ * _erratoi - make the string like an integer
+ * @s: the sentence
+ *
+ * Return: 0 or 1
+ */
+int _erratoi(char *s)
+{
+	int b = 0;
+	unsigned long int result = 0;
+
+	if (*s == '+')
+		s++;  /* TODO: why does this make main return 255? */
+	for (b = 0;  s[b] != '\0'; b++)
+	{
+		if (s[b] >= '0' && s[b] <= '9')
+		{
+			result *= 10;
+			result += (s[b] - '0');
+			if (result > INT_MAX)
+				return (-1);
+		}
+		else
+			return (-1);
+	}
+	return (result);
+}
 
