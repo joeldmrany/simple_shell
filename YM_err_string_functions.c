@@ -24,7 +24,6 @@ int _putfd(char c, int fd)
 
 /**
  *_eputs - output the string
-
  * @str: outputted string
  *
  * Return: void
