@@ -22,3 +22,24 @@ int _putfd(char c, int fd)
 	return (1);
 }
 
+/**
+ *_eputs - output the string
+
+ * @str: outputted string
+ *
+ * Return: void
+ */
+void _eputs(char *str)
+{
+	int a = 0;
+
+	if (!str)
+		return;
+	while (str[a] != '\0')
+	{
+		_eputchar(str[a]);
+		a++;
+	}
+}
+
+
