@@ -52,4 +52,43 @@ void print_error(info_t *info, char *estr)
 	_eputs(": ");
 	_eputs(estr);
 }
+/**
+ * print_d - decimal which will be printed
+ * @input: an output
+ * @fd: a fd that will effect
+ *
+ * Return: a return value of the function
+ */
+int print_d(int input, int fd)
+{
+	int (*__putchar)(char) = _putchar;
+	int a, count = 0;
+	unsigned int _abs_, current;
+
+	if (fd == STDERR_FILENO)
+		__putchar = _eputchar;
+	if (input < 0)
+	{
+		_abs_ = -input;
+		__putchar('-');
+		count++;
+	}
+	else
+		_abs_ = input;
+	current = _abs_;
+	for (a = 1000000000; a > 1; a /= 10)
+	{
+		if (_abs_ / a)
+		{
+			__putchar('0' + current / a);
+			count++;
+		}
+		current %= a;
+	}
+	__putchar('0' + current);
+	count++;
+
+	return (count);
+}
+
 
