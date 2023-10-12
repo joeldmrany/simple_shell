@@ -78,4 +78,22 @@ size_t print_list(const list_t *h)
 	return (i);
 }
 
+/**
+ * list_len - get the list of DC
+ * @h: first null pointer
+ *
+ * Return: list size
+ */
+size_t list_len(const list_t *h)
+{
+	size_t i = 0;
+
+	while (h)
+	{
+		h = h->next;
+		i++;
+	}
+	return (i);
+}
+
 
