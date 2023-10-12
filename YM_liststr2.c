@@ -96,4 +96,26 @@ size_t list_len(const list_t *h)
 	return (i);
 }
 
+/**
+ * node_starts_with - gets the prefix
+ * @node: list node
+ * @prefix: matched string
+ * @c: the char after to it's string
+ *
+ * Return: node matched, NULL
+ */
+list_t *node_starts_with(list_t *node, char *prefix, char c)
+{
+	char *p = NULL;
+
+	while (node)
+	{
+		p = starts_with(node->str, prefix);
+		if (p && ((c == -1) || (*p == c)))
+			return (node);
+		node = node->next;
+	}
+	return (NULL);
+}
+
 
