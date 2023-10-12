@@ -39,4 +39,24 @@ int delete_node_at_index(list_t **head, unsigned int index)
 	return (0);
 }
 
+/**
+ * print_list_str - the string list to print
+ * @h: first node pointer
+ *
+ * Return: list size
+ */
+size_t print_list_str(const list_t *h)
+{
+	size_t i = 0;
+
+	while (h)
+	{
+		_puts(h->str ? h->str : "(nil)");
+		_puts("\n");
+		h = h->next;
+		i++;
+	}
+	return (i);
+}
+
 
