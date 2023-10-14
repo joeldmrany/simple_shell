@@ -16,3 +16,23 @@ int populate_env_list(info_t *info)
 	return (0);
 }
 
+/**
+ * _myunsetenv - unlike the previous one
+ * @info: potential structure argument
+ * Return: zero
+ */
+int _myunsetenv(info_t *info)
+{
+	int a;
+
+	if (info->argc == 1)
+	{
+		_eputs("Too few arguements.\n");
+		return (1);
+	}
+	for (a = 1; a <= info->argc; a++)
+		_unsetenv(info, info->argv[a]);
+
+	return (0);
+}
+
