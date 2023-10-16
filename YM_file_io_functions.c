@@ -101,4 +101,24 @@ int read_history(info_t *info)
 	renumber_history(info);
 	return (info->histcount);
 }
+/**
+ * build_history_list - linked list history
+ * @info: maintaining informations
+ * @buf: the buffer
+ * @linecount: counts the lines
+ *
+ * Return: 0
+ */
+int build_history_list(info_t *info, char *buf, int linecount)
+{
+	list_t *node = NULL;
+
+	if (info->history)
+		node = info->history;
+	add_node_end(&node, buf, linecount);
+
+	if (!info->history)
+		info->history = node;
+	return (0);
+}
 
