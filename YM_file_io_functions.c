@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * get_history_file - we will get history file 
+ * get_history_file - we will get history file
  * @info: struct parameter
  *
  * Return: string file
