@@ -121,4 +121,22 @@ int build_history_list(info_t *info, char *buf, int linecount)
 		info->history = node;
 	return (0);
 }
+/**
+ * renumber_history - rearrang or change numbers
+ * @info: potential struct
+ *
+ * Return: the reaccount
+ */
+int renumber_history(info_t *info)
+{
+	list_t *node = info->history;
+	int a = 0;
+
+	while (node)
+	{
+		node->num = a++;
+		node = node->next;
+	}
+	return (info->histcount = a);
+}
 
