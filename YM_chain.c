@@ -112,4 +112,44 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 	*p = j;
 }
 
+/**
+ * replace_vars - replace it by another
+ * @info: parameter structure
+ *
+ * Return: 1 or 0
+ */
+int replace_vars(info_t *info)
+{
+	int d = 0;
+	list_t *node;
+
+	for (d = 0; info->argv[d]; d++)
+	{
+		if (info->argv[d][0] != '$' || !info->argv[d][1])
+			continue;
+
+		if (!_strcmp(info->argv[d], "$?"))
+		{
+			replace_string(&(info->argv[d]),
+				_strdup(convert_number(info->status, 10, 0)));
+			continue;
+		}
+		if (!_strcmp(info->argv[d], "$$"))
+		{
+			replace_string(&(info->argv[d]),
+				_strdup(convert_number(getpid(), 10, 0)));
+			continue;
+		}
+		node = node_starts_with(info->env, &info->argv[d][1], '=');
+		if (node)
+		{
+			replace_string(&(info->argv[d]),
+				_strdup(_strchr(node->str, '=') + 1));
+			continue;
+		}
+		replace_string(&info->argv[d], _strdup(""));
+
+	}
+	return (0);
+}
 
