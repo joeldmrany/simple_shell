@@ -20,4 +20,25 @@ int _putchar(char c)
 		buf[a++] = c;
 	return (1);
 }
+/**
+ * _strcpy - string copier
+ * @dest: a destination
+ * @src: a source
+ *
+ * Return: destination pointer
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int b = 0;
+
+	if (dest == src || src == 0)
+		return (dest);
+	while (src[b])
+	{
+		dest[b] = src[b];
+		b++;
+	}
+	dest[b] = 0;
+	return (dest);
+}
 
