@@ -41,4 +41,19 @@ char *_strcat(char *dest, char *src)
 	return (raet);
 }
 
+/**
+ * starts_with - haystack checker
+ * @haystack: searcher haystack
+ * @needle: string finder
+ *
+ * Return: NULL or thing else
+ */
+char *starts_with(const char *haystack, const char *needle)
+{
+	while (*needle)
+		if (*needle++ != *haystack++)
+			return (NULL);
+	return ((char *)haystack);
+}
+
 
