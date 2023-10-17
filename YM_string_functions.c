@@ -56,4 +56,21 @@ char *starts_with(const char *haystack, const char *needle)
 	return ((char *)haystack);
 }
 
+/**
+ * _strlen - length of the string returns
+ * @s: a string
+ *
+ * Return: length of the string
+ */
+int _strlen(char *s)
+{
+	int a = 0;
+
+	if (!s)
+		return (0);
+
+	while (*s++)
+		a++;
+	return (a);
+}
 
