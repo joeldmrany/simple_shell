@@ -4,7 +4,7 @@
  * _putchar - get the char from input to output
  * @c: printed char
  *
- * Return: 1 or -1 
+ * Return: 1 or -1
  */
 int _putchar(char c)
 {
@@ -58,5 +58,27 @@ void _puts(char *str)
 		_putchar(str[b]);
 		b++;
 	}
+}
+/**
+ * _strdup - string duplicater
+ * @str: duplicated string
+ *
+ * Return: duplicated string pointer
+ */
+char *_strdup(const char *str)
+{
+	int count = 0;
+	char *ret;
+
+	if (str == NULL)
+		return (NULL);
+	while (*str++)
+		count++;
+	ret = malloc(sizeof(char) * (count + 1));
+	if (!ret)
+		return (NULL);
+	for (count++; count--;)
+		ret[count] = *--str;
+	return (ret);
 }
 
