@@ -115,4 +115,45 @@ int find_builtin(info_t *info)
 	return (built_in_ret);
 }
 
+/**
+ * find_cmd - command finder
+ * @info: returning value of parameter
+ *
+ * Return: (void)
+ */
+void find_cmd(info_t *info)
+{
+	char *path = NULL;
+	int b, k;
+
+	info->path = info->argv[0];
+	if (info->linecount_flag == 1)
+	{
+		info->line_count++;
+		info->linecount_flag = 0;
+	}
+	for (b = 0, k = 0; info->arg[b]; b++)
+		if (!is_delim(info->arg[b], " \t\n"))
+			k++;
+	if (!k)
+		return;
+
+	path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
+	if (path)
+	{
+		info->path = path;
+		fork_cmd(info);
+	}
+	else
+	{
+		if ((interactive(info) || _getenv(info, "PATH=")
+			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+			fork_cmd(info);
+		else if (*(info->arg) != '\n')
+		{
+			info->status = 127;
+			print_error(info, "not found\n");
+		}
+	}
+}
 
