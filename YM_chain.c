@@ -42,4 +42,40 @@ int replace_string(char **old, char *new)
 	*old = new;
 	return (1);
 }
+/**
+ * is_chain - buffer checker
+ * @info: parameter structure
+ *
+ * @buf: letter of buffer
+ *
+ * @p: the string position like p
+ *
+ * Return: 1 or 0
+ */
+int is_chain(info_t *info, char *buf, size_t *p)
+{
+	size_t j = *p;
+
+	if (buf[j] == '|' && buf[j + 1] == '|')
+	{
+		buf[j] = 0;
+		j++;
+		info->cmd_buf_type = CMD_OR;
+	}
+	else if (buf[j] == '&' && buf[j + 1] == '&')
+	{
+		buf[j] = 0;
+		j++;
+		info->cmd_buf_type = CMD_AND;
+	}
+	else if (buf[j] == ';') /* found the final */
+	{
+		buf[j] = 0; /* make ; NULL*/
+		info->cmd_buf_type = CMD_CHAIN;
+	}
+	else
+		return (0);
+	*p = j;
+	return (1);
+}
 
