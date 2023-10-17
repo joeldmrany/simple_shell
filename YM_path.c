@@ -42,4 +42,25 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 	}
 	return (NULL);
 }
+/**
+ * is_cmd - excutable file checker
+ * @info: structure information
+ * @path: file path
+ *
+ * Return: 0 or 1
+ */
+int is_cmd(info_t *info, char *path)
+{
+	struct stat st;
+
+	(void)info;
+	if (!path || stat(path, &st))
+		return (0);
+
+	if (st.st_mode & S_IFREG)
+	{
+		return (1);
+	}
+	return (0);
+}
 
