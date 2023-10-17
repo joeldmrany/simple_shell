@@ -45,4 +45,30 @@ char *_strncpy(char *dest, char *src, int n)
 	return (s);
 }
 
+/**
+ **_strncat - string concatenation
+ *@dest: string number one
+ *@src: string number two
+ *@n: number n
+ *Return: string that have been concatenated
+ */
+char *_strncat(char *dest, char *src, int n)
+{
+	int i, j;
+	char *s = dest;
+
+	i = 0;
+	j = 0;
+	while (dest[i] != '\0')
+		i++;
+	while (src[j] != '\0' && j < n)
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	if (j < n)
+		dest[i] = '\0';
+	return (s);
+}
 
