@@ -41,4 +41,26 @@ int _myhistory(info_t *info)
 	print_list(info->history);
 	return (0);
 }
+/**
+ * print_alias - gets a string
+ * @node: node the alias
+ *
+ * Return: 0 or 1
+ */
+int print_alias(list_t *node)
+{
+	char *p = NULL, *a = NULL;
+
+	if (node)
+	{
+		p = _strchr(node->str, '=');
+		for (a = node->str; a <= p; a++)
+			_putchar(*a);
+		_putchar('\'');
+		_puts(p + 1);
+		_puts("'\n");
+		return (0);
+	}
+	return (1);
+}
 
