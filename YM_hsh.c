@@ -83,4 +83,36 @@ int hsh(info_t *info, char **av)
 	}
 	return (retur);
 }
+/**
+ * find_builtin - buiting finder
+ *
+ * @info: a value of return
+ *
+ * Return: 0 or 1 or -2 or -1
+ */
+int find_builtin(info_t *info)
+{
+	int s, built_in_ret = -1;
+	builtin_table builtintbl[] = {
+		{"exit", _myexit},
+		{"env", _myenv},
+		{"help", _myhelp},
+		{"history", _myhistory},
+		{"setenv", _mysetenv},
+		{"unsetenv", _myunsetenv},
+		{"cd", _mycd},
+		{"alias", _myalias},
+		{NULL, NULL}
+	};
+
+	for (s = 0; builtintbl[s].type; s++)
+		if (_strcmp(info->argv[0], builtintbl[s].type) == 0)
+		{
+			info->line_count++;
+			built_in_ret = builtintbl[s].func(info);
+			break;
+		}
+	return (built_in_ret);
+}
+
 
