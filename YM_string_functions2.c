@@ -41,4 +41,22 @@ char *_strcpy(char *dest, char *src)
 	dest[b] = 0;
 	return (dest);
 }
+/**
+ *_puts - get the string from input to output
+ *@str: the string
+ *
+ * Return: (void)
+ */
+void _puts(char *str)
+{
+	int b = 0;
+
+	if (!str)
+		return;
+	while (str[b] != '\0')
+	{
+		_putchar(str[b]);
+		b++;
+	}
+}
 
