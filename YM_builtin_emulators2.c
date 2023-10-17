@@ -85,4 +85,25 @@ int unset_alias(info_t *info, char *str)
 	*p = c;
 	return (ret);
 }
+/**
+ * set_alias - set an alias
+ * @info: structure parameter
+ * @str: a string
+ *
+ * Return: 0 or 1
+ */
+int set_alias(info_t *info, char *str)
+{
+	char *p;
+
+	p = _strchr(str, '=');
+	if (!p)
+		return (1);
+	if (!*++p)
+		return (unset_alias(info, str));
+
+	unset_alias(info, str);
+	return (add_node_end(&(info->alias), str, 0) == NULL);
+}
+
 
