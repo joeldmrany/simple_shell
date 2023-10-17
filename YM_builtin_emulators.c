@@ -64,3 +64,31 @@ int _mycd(info_t *info)
 	return (0);
 }
 
+/**
+ * _myexit - get out from the shell
+ * @info: containment structure
+ *  Return: get out from the shell if
+ *         0 if info.argv[0] != "exit"
+ */
+int _myexit(info_t *info)
+{
+	int exitcheck;
+
+	if (info->argv[1])
+	{
+		exitcheck = _erratoi(info->argv[1]);
+		if (exitcheck == -1)
+		{
+			info->status = 2;
+			print_error(info, "Illegal number: ");
+			_eputs(info->argv[1]);
+			_eputchar('\n');
+			return (1);
+		}
+		info->err_num = _erratoi(info->argv[1]);
+		return (-2);
+	}
+	info->err_num = -1;
+	return (-2);
+}
+
