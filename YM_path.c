@@ -63,4 +63,24 @@ int is_cmd(info_t *info, char *path)
 	}
 	return (0);
 }
+/**
+ * dup_chars - characters duplicator
+ * @pathstr: string path
+ * @start: not ending
+ * @stop: the stopping
+ *
+ * Return: buffer pointer
+ */
+char *dup_chars(char *pathstr, int start, int stop)
+{
+	static char buf[1024];
+	int i = 0, k = 0;
+
+	for (k = 0, i = start; i < stop; i++)
+		if (pathstr[i] != ':')
+			buf[k++] = pathstr[i];
+	buf[k] = 0;
+	return (buf);
+}
+
 
