@@ -56,6 +56,7 @@ typedef struct liststr
  *@argv: string generator
  *@path: having the path for it
  *@argc: count the argument
+
  *@line_count: count the lines
  *@err_num: exit the err number
  *@linecount_flag: flags the counts line
@@ -139,8 +140,8 @@ char *_strcat(char *, char *);
 /* YM_string_functions2.c */
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
-void _puts(char *);
-int _putchar(char);
+void _put(char *);
+int _putschar(char);
 
 /* YM_string_functions3.c */
 char *_strncpy(char *, char *, int);

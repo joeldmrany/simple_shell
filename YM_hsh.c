@@ -57,7 +57,7 @@ int hsh(info_t *info, char **av)
 	{
 		clear_info(info);
 		if (interactive(info))
-			_puts("$ ");
+			_put("$ ");
 		_eputchar(BUF_FLUSH);
 		r = get_input(info);
 		if (r != -1)
@@ -68,7 +68,7 @@ int hsh(info_t *info, char **av)
 				find_cmd(info);
 		}
 		else if (interactive(info))
-			_putchar('\n');
+			_putschar('\n');
 		free_info(info, 0);
 	}
 	write_history(info);

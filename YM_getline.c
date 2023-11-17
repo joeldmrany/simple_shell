@@ -8,9 +8,9 @@
  */
 void sigintHandler(__attribute__((unused))int sig_num)
 {
-	_puts("\n");
-	_puts("$ ");
-	_putchar(BUF_FLUSH);
+	_put("\n");
+	_put("$ ");
+	_putschar(BUF_FLUSH);
 }
 /**
  * read_buf - the buffer
@@ -90,7 +90,7 @@ ssize_t get_input(info_t *info)
 	ssize_t r = 0;
 	char **buf_p = &(info->arg), *p;
 
-	_putchar(BUF_FLUSH);
+	_putschar(BUF_FLUSH);
 	r = input_buf(info, &buf, &len);
 	if (r == -1)
 		return (-1);

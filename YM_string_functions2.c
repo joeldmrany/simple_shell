@@ -6,7 +6,7 @@
  *
  * Return: 1 or -1
  */
-int _putchar(char c)
+int _putschar(char c)
 {
 	static int a;
 	static char buf[WRITE_BUF_SIZE];
@@ -47,7 +47,7 @@ char *_strcpy(char *dest, char *src)
  *
  * Return: (void)
  */
-void _puts(char *str)
+void _put(char *str)
 {
 	int b = 0;
 
@@ -55,7 +55,7 @@ void _puts(char *str)
 		return;
 	while (str[b] != '\0')
 	{
-		_putchar(str[b]);
+		_putschar(str[b]);
 		b++;
 	}
 }
